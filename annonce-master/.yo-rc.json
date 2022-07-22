@@ -1,0 +1,18 @@
+{
+  "generator-jhipster": {
+    "baseName": "newsapp",
+    "packageName": "com.darttc.newsapp",
+    "packageFolder": "com/darttc/newsapp",
+    "authenticationType": "token",
+    "hibernateCache": "ehcache",
+    "clusteredHttpSession": "no",
+    "websocket": "no",
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "useCompass": false,
+    "buildTool": "maven",
+    "frontendBuilder": "grunt",
+    "javaVersion": "7"
+  }
+}

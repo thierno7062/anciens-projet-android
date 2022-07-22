@@ -1,0 +1,55 @@
+
+<div>
+    <h2><span data-translate="petiteAnnonceKmerApp.declaration.detail.title">Declaration</span> {{vm.declaration.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="petiteAnnonceKmerApp.declaration.title">Title</span></dt>
+        <dd>
+            <span>{{vm.declaration.title}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.declaration.description">Description</span></dt>
+        <dd>
+            <span>{{vm.declaration.description}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.declaration.creationDate">Creation Date</span></dt>
+        <dd>
+            <span>{{vm.declaration.creationDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.declaration.lastModifiedDate">Last Modified Date</span></dt>
+        <dd>
+            <span>{{vm.declaration.lastModifiedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.declaration.isPublished">Is Published</span></dt>
+        <dd>
+            <span>{{vm.declaration.isPublished}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.declaration.price">Price</span></dt>
+        <dd>
+            <span>{{vm.declaration.price}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.declaration.publishedDate">Published Date</span></dt>
+        <dd>
+            <span>{{vm.declaration.publishedDate | date:'medium'}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.declaration.owner">Owner</span></dt>
+        <dd>
+            {{vm.declaration.owner.firstName}}
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.declaration.localisation">Localisation</span></dt>
+        <dd>
+            <a ui-sref="localisation-detail({id:vm.declaration.localisation.id})">{{vm.declaration.localisation.city}}</a>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-custom-cancel">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="declaration-detail.edit({id:vm.declaration.id})" class="btn btn-custom-secondary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

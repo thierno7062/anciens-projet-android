@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="ic_launcher_background">#3FBBF4</color>
+
+    <color name="primary">#03A9F4</color>
+    <color name="primary_dark">#0288D1</color>
+    <color name="accent">#039be5</color>
+
+    <color name="default_window_background">#fff1f1f1</color>
+
+    <!-- Changed a little to factor in the 0.54 alpha, was #fdd835 -->
+    <color name="color_activated">#fbb700</color>
+</resources>

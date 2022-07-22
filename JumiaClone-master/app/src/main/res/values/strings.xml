@@ -1,0 +1,46 @@
+<resources>
+    <string name="app_name">Jumia Clone</string>
+    <string name="phones_tablets"><![CDATA[Phones & Tablets]]></string>
+    <string name="home_office"><![CDATA[Home & Office]]></string>
+    <string name="health_beauty"><![CDATA[Health & Beauty]]></string>
+    <string name="all">All</string>
+    <string name="shoes">Shoes</string>
+    <string name="women">Women</string>
+    <string name="clothing">Clothing</string>
+    <string name="men">Men</string>
+    <string name="title">Jumia Express</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="entertainment">Entertainment</string>
+    <string name="stay_tuned">Stay Tuned</string>
+    <string name="phones">Phones</string>
+    <string name="for_all">For All</string>
+    <string name="power_up">Power Up</string>
+    <string name="your_kitchen">Your Kitchen</string>
+    <string name="deals_of_the_day">Deals of The Day!</string>
+    <string name="hair_extensions">Hair Extensions</string>
+    <string name="your_desire">Your Desire</string>
+    <string name="household">Household</string>
+    <string name="needs_for_you">Needs For You</string>
+    <string name="for_men">For Men</string>
+    <string name="from_1_500">From #1,500</string>
+    <string name="shops_of_the_week">SHOPS OF THE WEEK</string>
+    <string name="featured_stores">FEATURED STORES</string>
+    <string name="top_sellers">TOP SELLERS</string>
+    <string name="baby">Baby</string>
+    <string name="computing">Computing</string>
+    <string name="electronics">Electronics</string>
+    <string name="our_services">Our services</string>
+    <string name="jumia_travel">Jumia Travel</string>
+    <string name="jumia_food">Jumia Food</string>
+    <string name="jumia_deals">Jumia Deals</string>
+    <string name="jumia_house">Jumia House</string>
+    <string name="jumia_car">Jumia Car</string>
+    <string name="jumia_one">Jumia One</string>
+    <string name="sell_on_jumia">Sell on Jumia</string>
+    <string name="jumia_flight_new">Jumia Flight NEW!</string>
+    <string name="shop_by_category">Shop by category</string>
+    <string name="you_have_no_items_in_the_cart">You have no items in the cart</string>
+    <string name="continue_shopping">CONTINUE SHOPPING</string>
+</resources>

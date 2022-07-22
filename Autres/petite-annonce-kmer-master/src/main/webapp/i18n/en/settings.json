@@ -1,0 +1,51 @@
+{
+    "settings": {
+        "menu":{
+            "account":"Mon compte",
+            "profile":"Profile",
+            "changePassword":"Mot de Passe",
+            "messages":"Messages",
+            "sessions":"Sessions Actives",
+            "effacer":"Supprimer le compte",
+            "logout":"Déconnexion",
+            "content":"Contenu",
+            "myDeclarations":"Mes annonces",
+            "addDeclaration":"Ajouter une annonce",
+            "alerts":"Mes alertes",
+            "draftMessages":"Brouillon",
+            "sentMessages":"Messages envoyés",
+            "receivedMessages":"Boite de réception",
+            "newMessage":"Nouveau message"
+        },
+
+        "title": "Profil",
+        "form": {
+            "login":"Login",
+            "firstname": "Prénom",
+            "firstname.placeholder": "Votre prénom",
+            "lastname": "Nom",
+            "lastname.placeholder": "Votre nom",
+            "language": "Langue",
+            "button": "Sauvegarder"
+        },
+        "messages": {
+            "error": {
+                "fail": "<strong>Une erreur est survenue !</strong> Votre profil n'a pas été sauvegardé.",
+                "emailexists": "<strong>Cet email est déjà utilisé !</strong> Veuillez en choisir un autre."
+            },
+            "success": "<strong>Votre profil a été sauvegardé !</strong>",
+            "validate": {
+                "firstname": {
+                    "required": "Votre prénom est requis.",
+                    "minlength": "Votre prénom doit comporter au moins un caractère.",
+                    "maxlength": "Votre prénom ne doit pas comporter plus de 50 caractères."
+                },
+                "lastname": {
+                    "required": "Votre nom est requis.",
+                    "minlength": "Votre nom doit comporter au moins un caractère.",
+                    "maxlength": "Votre nom ne doit pas comporter plus de 50 caractères."
+                }
+            }
+        }
+    }
+}

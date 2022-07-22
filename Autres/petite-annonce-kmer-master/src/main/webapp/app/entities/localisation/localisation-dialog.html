@@ -1,0 +1,115 @@
+
+<form name="editForm" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myLocalisationLabel" data-translate="petiteAnnonceKmerApp.localisation.home.createOrEditLabel">Create or edit a Localisation</h4>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" ng-show="vm.localisation.id">
+            <label for="id" data-translate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                    ng-model="vm.localisation.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="petiteAnnonceKmerApp.localisation.country" for="field_country">Country</label>
+            <select class="form-control"
+                    id="field_country"
+                    name="country"
+                    ng-model="vm.localisation.country"
+                    ng-options="country as country.name for country in vm.countries track by country.id"
+                    ng-change="vm.loadRegion()">
+
+                <option value=""></option>
+            </select>
+            <div ng-show="editForm.country.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.country.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="control-label" data-translate="petiteAnnonceKmerApp.localisation.region" for="field_region">Region</label>
+            <select class="form-control"
+                    id="field_region"
+                    name="region"
+                    ng-model="vm.localisation.region"
+                    ng-options="region as region.name for region in vm.countryRegion track by region.id">
+                <option value=""></option>
+            </select>
+            <div ng-show="editForm.region.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.region.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="petiteAnnonceKmerApp.localisation.city" for="field_city">City</label>
+            <input type="text" class="form-control" name="city" id="field_city"
+                    ng-model="vm.localisation.city"
+                    required />
+            <div ng-show="editForm.city.$invalid">
+                <p class="help-block"
+                    ng-show="editForm.city.$error.required" data-translate="entity.validation.required">
+                    This field is required.
+                </p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="petiteAnnonceKmerApp.localisation.village" for="field_village">Village</label>
+            <input type="text" class="form-control" name="village" id="field_village"
+                    ng-model="vm.localisation.village"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="petiteAnnonceKmerApp.localisation.area" for="field_area">Area</label>
+            <input type="text" class="form-control" name="area" id="field_area"
+                    ng-model="vm.localisation.area"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="petiteAnnonceKmerApp.localisation.streetName" for="field_streetName">Street Name</label>
+            <input type="text" class="form-control" name="streetName" id="field_streetName"
+                    ng-model="vm.localisation.streetName"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="petiteAnnonceKmerApp.localisation.streetNumber" for="field_streetNumber">Street Number</label>
+            <input type="text" class="form-control" name="streetNumber" id="field_streetNumber"
+                    ng-model="vm.localisation.streetNumber"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="petiteAnnonceKmerApp.localisation.postalCode" for="field_postalCode">Postal Code</label>
+            <input type="text" class="form-control" name="postalCode" id="field_postalCode"
+                    ng-model="vm.localisation.postalCode"
+                     />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="petiteAnnonceKmerApp.localisation.specialAdress" for="field_specialAdress">Special Adress</label>
+            <input type="text" class="form-control" name="specialAdress" id="field_specialAdress"
+                    ng-model="vm.localisation.specialAdress"
+                     />
+        </div>
+
+        <div class="form-group">
+            <label data-translate="petiteAnnonceKmerApp.localisation.user" for="field_user">User</label>
+            <select class="form-control" id="field_user" name="user" ng-model="vm.localisation.user" ng-options="user as user.firstName for user in vm.users track by user.id">
+                <option value=""></option>
+            </select>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-custom-cancel" data-dismiss="modal" ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-custom-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

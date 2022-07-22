@@ -1,0 +1,31 @@
+{
+    "petiteAnnonceKmerApp": {
+        "localisation" : {
+            "home": {
+                "title": "Localisations",
+                "createLabel": "Créer un nouveau Localisation",
+                "createOrEditLabel": "Créer ou éditer un Localisation",
+                "search": "Recherche pour Localisation"
+            },
+            "created": "Un nouveau Localisation a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Localisation avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Localisation avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Localisation {{ id }} ?"
+            },
+            "detail": {
+                "title": "Localisation"
+            },
+            "country": "Country",
+            "region": "Region",
+            "city": "City",
+            "village": "Village",
+            "area": "Area",
+            "streetName": "Street Name",
+            "streetNumber": "Street Number",
+            "postalCode": "Postal Code",
+            "specialAdress": "Special Adress",
+            "user": "User"
+        }
+    }
+}

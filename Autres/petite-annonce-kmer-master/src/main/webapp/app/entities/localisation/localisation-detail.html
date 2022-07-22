@@ -1,0 +1,59 @@
+
+<div>
+    <h2><span data-translate="petiteAnnonceKmerApp.localisation.detail.title">Localisation</span> {{vm.localisation.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="dl-horizontal jh-entity-details">
+        <dt><span data-translate="petiteAnnonceKmerApp.localisation.country">Country</span></dt>
+        <dd>
+            <span>{{vm.localisation.country.name}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.localisation.region">Region</span></dt>
+        <dd>
+            <span>{{vm.localisation.region.name}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.localisation.city">City</span></dt>
+        <dd>
+            <span>{{vm.localisation.city}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.localisation.village">Village</span></dt>
+        <dd>
+            <span>{{vm.localisation.village}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.localisation.area">Area</span></dt>
+        <dd>
+            <span>{{vm.localisation.area}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.localisation.streetName">Street Name</span></dt>
+        <dd>
+            <span>{{vm.localisation.streetName}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.localisation.streetNumber">Street Number</span></dt>
+        <dd>
+            <span>{{vm.localisation.streetNumber}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.localisation.postalCode">Postal Code</span></dt>
+        <dd>
+            <span>{{vm.localisation.postalCode}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.localisation.specialAdress">Special Adress</span></dt>
+        <dd>
+            <span>{{vm.localisation.specialAdress}}</span>
+        </dd>
+        <dt><span data-translate="petiteAnnonceKmerApp.localisation.user">User</span></dt>
+        <dd>
+            {{vm.localisation.user.firstName}}
+        </dd>
+    </dl>
+
+    <button type="submit"
+            ui-sref="{{ vm.previousState }}"
+            class="btn btn-custom-cancel">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span data-translate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button" ui-sref="localisation-detail.edit({id:vm.localisation.id})" class="btn btn-custom-secondary">
+        <span class="glyphicon glyphicon-pencil"></span>
+        <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"> Edit</span>
+    </button>
+</div>

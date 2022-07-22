@@ -1,0 +1,47 @@
+{
+    "relationships": [],
+    "fields": [
+        {
+            "fieldId": 1,
+            "fieldName": "subject",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Subject",
+            "fieldNameUnderscored": "subject"
+        },
+        {
+            "fieldId": 2,
+            "fieldName": "description",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Description",
+            "fieldNameUnderscored": "description"
+        },
+        {
+            "fieldId": 3,
+            "fieldName": "author",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Author",
+            "fieldNameUnderscored": "author"
+        },
+        {
+            "fieldId": 4,
+            "fieldName": "creationDate",
+            "fieldType": "DateTime",
+            "fieldNameCapitalized": "CreationDate",
+            "fieldNameUnderscored": "creation_date"
+        },
+        {
+            "fieldId": 5,
+            "fieldName": "image",
+            "fieldType": "String",
+            "fieldNameCapitalized": "Image",
+            "fieldNameUnderscored": "image"
+        }
+    ],
+    "fieldsContainOwnerManyToMany": false,
+    "fieldsContainOneToMany": false,
+    "fieldsContainLocalDate": false,
+    "fieldsContainCustomTime": true,
+    "fieldsContainBigDecimal": false,
+    "fieldsContainDateTime": true,
+    "changelogDate": "20150224184543"
+}

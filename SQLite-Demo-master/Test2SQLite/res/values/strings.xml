@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Test 2-SQLite Sample</string>
+    <string name="msg_yes">Yes</string>
+    <string name="msg_no">No</string>
+    <string name="msg_ok">OK</string>
+    <string name="msg_valid">Please type your valid email address.</string>
+    <string name="cancel">Cancel</string>
+    <string name="msg_invalid">Invalid Email or password</string>
+    <string name="valid_email">Please enter a valid email address</string>
+    <string name="valid_name">Please enter valid name</string>
+    <string name="valid_phno"> Phone number is not valid.</string>
+    
+    <string name="edit_info">Edit User Details</string>
+    <string name="save">Save</string>
+    
+    <string name="hint_name">Name</string>
+    <string name="hint_email">EMail Address</string>
+    <string name="hint_phno">Phone Number</string>
+
+</resources>

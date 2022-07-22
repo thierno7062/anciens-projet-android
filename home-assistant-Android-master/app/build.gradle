@@ -1,0 +1,142 @@
+apply plugin: 'com.android.application'
+apply plugin: 'com.jakewharton.hugo'
+apply plugin: 'kotlin-android'
+
+ext.languages = ["de", "el", "fr", "in", "ja", "nl"]
+ext.supportLibraryVersion = "27.0.2"
+ext.c_languages = ["de", "el", "fr", "id", "ja", "nl"]
+ext.crowdinKey = null
+
+android {
+    compileSdkVersion 27
+    buildToolsVersion '27.0.3'
+    defaultConfig {
+        applicationId "io.homeassistant.android"
+        minSdkVersion 21
+        targetSdkVersion 27
+        versionCode 4
+        versionName "1.0"
+        resConfigs languages
+        setProperty("archivesBaseName", "hass-$versionName")
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "boolean", "WEAR_APP", "false"
+    }
+    buildTypes {
+        release {
+            debuggable false
+            minifyEnabled true
+            shrinkResources true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            debuggable true
+            versionNameSuffix "-debug"
+        }
+    }
+    flavorDimensions "platform", "dependencies"
+    productFlavors {
+        phone {
+            dimension "platform"
+        }
+        wear {
+            dimension "platform"
+            minSdkVersion 25
+            buildConfigField "boolean", "WEAR_APP", "true"
+        }
+        standard {
+            dimension "dependencies"
+        }
+        fdroid {
+            dimension "dependencies"
+            versionNameSuffix "-fdroid"
+        }
+    }
+    variantFilter { variant ->
+        if (variant.name == "phoneFdroidDebug" || variant.name.startsWith("wearFdroid")) {
+            setIgnore(true)
+        }
+    }
+    sourceSets {
+        main {
+            res.srcDirs = [
+                    res.srcDirs.toArray()[0],
+                    "src/main/res/viewholders"
+            ]
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+def propFile = project.file("keyStore.properties")
+if (propFile.exists()) {
+    Properties props = new Properties()
+    props.load(new FileInputStream(propFile))
+    def main = android.signingConfigs.create("main")
+    main.storeFile project.file(props["keyStore"])
+    main.storePassword props["keyStorePassword"]
+    main.keyAlias props["keyAlias"]
+    main.keyPassword props["keyPassword"]
+
+    android.buildTypes.release.signingConfig = main
+    android.buildTypes.debug.signingConfig = main
+
+    ext.crowdinKey = props["crowdinKey"]
+}
+
+dependencies {
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre8:$kotlin_version"
+    implementation "com.android.support:appcompat-v7:$supportLibraryVersion"
+    implementation "com.android.support.constraint:constraint-layout:1.0.2"
+    phoneImplementation "com.android.support:customtabs:$supportLibraryVersion"
+    implementation "com.android.support:design:$supportLibraryVersion"
+    phoneImplementation "com.android.support:preference-v14:$supportLibraryVersion"
+    implementation "com.android.support:recyclerview-v7:$supportLibraryVersion"
+    wearImplementation "com.android.support:wear:$supportLibraryVersion"
+
+    implementation "com.squareup.okhttp3:okhttp:3.7.0"
+    implementation("com.afollestad:ason:1.4.15") {
+        exclude group: 'org.json', module: 'json'
+        exclude group: 'com.intellij', module: 'annotations'
+    }
+
+    standardImplementation "com.google.android.gms:play-services-wearable:11.8.0"
+    standardImplementation "com.google.android.gms:play-services-location:11.8.0"
+    fdroidImplementation "com.mapzen.android:lost:2.2.0"
+
+    testImplementation "junit:junit:4.12"
+    androidTestImplementation("com.android.support.test.espresso:espresso-core:2.2.2") {
+        exclude group: 'com.android.support'
+    }
+    androidTestImplementation("com.android.support.test:runner:0.5") {
+        exclude group: 'com.android.support'
+    }
+    androidTestImplementation("com.android.support.test:rules:0.5") {
+        exclude group: 'com.android.support'
+    }
+}
+
+task updateTranslations() {
+    doLast {
+        if (crowdinKey == null)
+            return
+        for (int i = 0; i < c_languages.size(); i++) {
+            String c_lang = c_languages[i]
+            if (c_lang == "")
+                continue
+            String lang = languages[i]
+            String file = "\$PWD/src/main/res/values-$lang/strings.xml"
+            exec {
+                executable "bash"
+                args "-c", "wget -O \"$file\" \"https://api.crowdin.com/api/project/home-assistant-android/export-file?file=strings.xml&language=$c_lang&key=$crowdinKey\""
+            }
+        }
+    }
+}

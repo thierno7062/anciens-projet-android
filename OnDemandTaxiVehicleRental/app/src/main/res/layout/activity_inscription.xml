@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.Inscription"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/colorWhite">
+
+    <LinearLayout
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <com.projets.heven.taxijaune.circleimage.CircleImageView
+            android:visibility="gone"
+            android:layout_marginLeft="0dp"
+            app:civ_border_width="2dp"
+            app:civ_border_color="@color/colorLogoBlack"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:padding="0dp"
+            android:src="@drawable/logo_taxijaune"
+            app:civ_circle_background_color="@color/colorWhite"/>
+
+        <TextView
+            android:layout_marginTop="5dp"
+            android:textSize="30sp"
+            android:textColor="@color/colorLogoBlack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/entrez_nvos_informations" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_margin="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true">
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_prenom_insc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:drawableTint="@color/colorLogoBlack"
+                android:drawableRight="@drawable/ic_profile_con"
+                android:textSize="16sp"
+                android:id="@+id/prenom_insc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:hint="@string/prenom" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_phone_insc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:maxLength="15"
+                android:drawableTint="@color/colorLogoBlack"
+                android:drawableRight="@drawable/ic_phone_outline"
+                android:textSize="16sp"
+                android:id="@+id/phone_insc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="phone"
+                android:hint="@string/t_l_phone" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_mdp_insc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:maxLength="12"
+                android:drawableTint="@color/colorLogoBlack"
+                android:drawableRight="@drawable/ic_password_outline"
+                android:textSize="16sp"
+                android:id="@+id/mdp_insc"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/mot_de_passe" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_mdp_conf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:maxLength="12"
+                android:drawableTint="@color/colorLogoBlack"
+                android:drawableRight="@drawable/ic_password_outline"
+                android:textSize="16sp"
+                android:id="@+id/mdp_conf"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:hint="@string/confirmez_le_mot_de_passe" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <!--<CheckBox-->
+        <!--android:id="@+id/check_email"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Recevoir de notification par mail" />-->
+
+        <LinearLayout
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="right">
+
+            <TextView
+                android:layout_marginTop="10dp"
+                android:paddingLeft="45dp"
+                android:paddingRight="45dp"
+                android:layout_marginBottom="10dp"
+                android:layout_centerHorizontal="true"
+                android:cursorVisible="false"
+                android:gravity="center"
+                android:id="@+id/envoyer"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_button"
+                android:text="@string/envoyer"
+                android:textColor="@color/colorLogoBlack"
+                android:layout_above="@+id/creer_compte"/>
+
+            <TextView
+                android:paddingLeft="45dp"
+                android:paddingRight="45dp"
+                android:textColor="@color/colorWhite"
+                android:layout_gravity="center"
+                android:background="@drawable/custom_button_second"
+                android:layout_marginBottom="10dp"
+                android:layout_alignParentBottom="true"
+                android:textAlignment="center"
+                android:layout_centerHorizontal="true"
+                android:id="@+id/jai_un_compte"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:text="@string/deja_inscrit_connectez_vous" />
+
+        </LinearLayout>
+
+        <ProgressBar
+            android:layout_gravity="center"
+            android:visibility="invisible"
+            android:id="@+id/progressBar_insc"
+            style="?android:attr/progressBarStyle"
+            android:layout_width="30dp"
+            android:layout_height="30dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

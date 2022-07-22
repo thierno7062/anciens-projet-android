@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+   <changeSet author="admin (generated)" id="1481988374183-1">
+      <addColumn tableName="declaration">
+         <column name="miniature_id" type="bigint"/>
+      </addColumn>
+   </changeSet>
+   <changeSet author="admin (generated)" id="1481988374183-2">
+      <addForeignKeyConstraint baseColumnNames="miniature_id"
+                               baseTableName="declaration"
+                               constraintName="FK5ndef6gkm41d8t5pwuco6ofd6"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="image"/>
+   </changeSet>
+</databaseChangeLog>

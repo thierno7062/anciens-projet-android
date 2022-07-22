@@ -1,0 +1,31 @@
+{
+    "petiteAnnonceKmerApp": {
+        "declaration" : {
+            "home": {
+                "title": "Declarations",
+                "createLabel": "Créer un nouveau Declaration",
+                "createOrEditLabel": "Créer ou éditer un Declaration",
+                "search": "Recherche pour Declaration"
+            },
+            "created": "Un nouveau Declaration a été créé avec l'identifiant {{ param }}",
+            "updated": "Le Declaration avec l'identifiant {{ param }} a été mis à jour",
+            "deleted": "Le Declaration avec l'identifiant {{ param }} a été supprimé",
+            "delete": {
+                "question": "Etes-vous certain de vouloir supprimer le Declaration {{ id }} ?"
+            },
+            "detail": {
+                "title": "Declaration"
+            },
+            "title": "Title",
+            "description": "Description",
+            "creationDate": "Creation Date",
+            "lastModifiedDate": "Last Modified Date",
+            "isPublished": "Is Published",
+            "price": "Price",
+            "publishedDate": "Published Date",
+            "owner": "Owner",
+            "localisation": "Localisation",
+            "images": "Images"
+        }
+    }
+}

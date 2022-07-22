@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+                   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.5.xsd">
+   <changeSet author="admin (generated)" id="1481402792640-1">
+      <createTable tableName="country">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="countryPK"/>
+         </column>
+         <column defaultValueNumeric="0" name="version" type="INT"/>
+         <column name="name" type="VARCHAR(255)"/>
+      </createTable>
+   </changeSet>
+
+   <changeSet author="admin (generated)" id="1481402792640-2">
+      <createTable tableName="declaration">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="declarationPK"/>
+         </column>
+         <column defaultValueNumeric="0" name="version" type="INT"/>
+         <column name="creation_date" type="DATETIME">
+            <constraints nullable="false"/>
+         </column>
+         <column name="description" type="VARCHAR(255)"/>
+         <column name="is_published" type="BIT">
+            <constraints nullable="false"/>
+         </column>
+         <column name="last_modified_date" type="DATETIME">
+            <constraints nullable="false"/>
+         </column>
+         <column name="price" type="DECIMAL(10, 2)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="published_date" type="DATETIME"/>
+         <column name="title" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="localisation_id" type="BIGINT"/>
+         <column name="owner_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+
+   <changeSet author="admin (generated)" id="1481402792640-3">
+      <createTable tableName="image">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="imagePK"/>
+         </column>
+         <column defaultValueNumeric="0" name="version" type="INT"/>
+         <column name="content" type="LONGBLOB">
+            <constraints nullable="false"/>
+         </column>
+         <column name="content_content_type" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="content_type" type="VARCHAR(255)"/>
+         <column name="extention" type="VARCHAR(10)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="file_name" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="title" type="VARCHAR(255)"/>
+         <column name="declaration_id" type="BIGINT"/>
+      </createTable>
+   </changeSet>
+
+   <changeSet author="admin (generated)" id="1481402792640-10">
+      <createTable tableName="localisation">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="localisationPK"/>
+         </column>
+         <column defaultValueNumeric="0" name="version" type="INT"/>
+         <column name="area" type="VARCHAR(255)"/>
+         <column name="city" type="VARCHAR(255)">
+            <constraints nullable="false"/>
+         </column>
+         <column name="postal_code" type="VARCHAR(255)"/>
+         <column name="special_adress" type="VARCHAR(255)"/>
+         <column name="street_name" type="VARCHAR(255)"/>
+         <column name="street_number" type="VARCHAR(255)"/>
+         <column name="village" type="VARCHAR(255)"/>
+         <column name="country_id" type="BIGINT"/>
+         <column name="region_id" type="BIGINT"/>
+         <column name="user_id" type="BIGINT"/>
+      </createTable>
+
+       <loadData encoding="UTF-8"
+                 file="config/liquibase/country.csv"
+                 separator=";"
+                 tableName="country"/>
+
+   </changeSet>
+
+   <changeSet author="admin (generated)" id="1481402792640-11">
+      <createTable tableName="region">
+         <column autoIncrement="true" name="id" type="BIGINT">
+            <constraints primaryKey="true" primaryKeyName="regionPK"/>
+         </column>
+         <column defaultValueNumeric="0" name="version" type="INT"/>
+         <column name="code" type="VARCHAR(255)"/>
+         <column name="name" type="VARCHAR(255)"/>
+         <column name="country_id" type="BIGINT"/>
+      </createTable>
+
+       <loadData encoding="UTF-8"
+                 file="config/liquibase/region.csv"
+                 separator=";"
+                 tableName="region" />
+
+   </changeSet>
+
+
+   <changeSet author="admin (generated)" id="1481402792640-20">
+      <addForeignKeyConstraint baseColumnNames="localisation_id"
+                               baseTableName="declaration"
+                               constraintName="FK305paed2oamwbr8ldy1s53hm3"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="localisation"/>
+   </changeSet>
+   <changeSet author="admin (generated)" id="1481402792640-21">
+      <addForeignKeyConstraint baseColumnNames="region_id"
+                               baseTableName="localisation"
+                               constraintName="FK3pqqcta8rbutubqk51s1jk21s"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="region"/>
+   </changeSet>
+   <changeSet author="admin (generated)" id="1481402792640-22">
+      <addForeignKeyConstraint baseColumnNames="user_id"
+                               baseTableName="localisation"
+                               constraintName="FK4ktnhhvndgxkqwva6leffrne0"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+
+   <changeSet author="admin (generated)" id="1481402792640-24">
+      <addForeignKeyConstraint baseColumnNames="country_id"
+                               baseTableName="localisation"
+                               constraintName="FK5gb2yr0yetqvdftwuo3gj1q8u"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="country"/>
+   </changeSet>
+   <changeSet author="admin (generated)" id="1481402792640-25">
+      <addForeignKeyConstraint baseColumnNames="owner_id"
+                               baseTableName="declaration"
+                               constraintName="FK6ilwfdtrqblpdkdnhqbe01j48"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="jhi_user"/>
+   </changeSet>
+   <changeSet author="admin (generated)" id="1481402792640-26">
+      <addForeignKeyConstraint baseColumnNames="country_id"
+                               baseTableName="region"
+                               constraintName="FK7vb2cqcnkr9391hfn72louxkq"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="country"/>
+   </changeSet>
+   <changeSet author="admin (generated)" id="1481402792640-27">
+      <addForeignKeyConstraint baseColumnNames="declaration_id"
+                               baseTableName="image"
+                               constraintName="FKl7a6lnbsgpdh67srvphfdkcsx"
+                               deferrable="false"
+                               initiallyDeferred="false"
+                               referencedColumnNames="id"
+                               referencedTableName="declaration"/>
+   </changeSet>
+
+
+</databaseChangeLog>

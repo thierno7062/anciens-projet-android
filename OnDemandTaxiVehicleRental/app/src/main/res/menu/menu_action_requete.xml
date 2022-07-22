@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <!--<item-->
+        <!--android:orderInCategory="100"-->
+        <!--app:showAsAction="never"-->
+        <!--android:id="@+id/action_accepter"-->
+        <!--android:title="Accepter" />-->
+
+    <!--<item-->
+        <!--android:id="@+id/action_refuser"-->
+        <!--android:orderInCategory="100"-->
+        <!--android:title="Refuser"-->
+        <!--app:showAsAction="never" />-->
+
+    <item
+        android:id="@+id/action_voir_trajet"
+        android:orderInCategory="100"
+        android:title="@string/voir_le_trajet"
+        app:showAsAction="never" />
+</menu>

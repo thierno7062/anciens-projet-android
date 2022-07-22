@@ -1,0 +1,28 @@
+{
+    "declarationUser":{
+        "createOrEditLabel":"Déposer une annonce",
+        "title":"Titre de l'annonce",
+        "description":"Description",
+        "price":"Prix",
+        "image1":"Photo 1",
+        "image2":"Photo 2",
+        "image3":"Photo 3",
+        "region":"Region",
+        "city":"Ville/village",
+        "streetName":"Rue/Quatier",
+        "cityHelp":"Veuillez commencer a saisir le nom de la(le) Ville/village pour activer l'auto completion",
+        "streetNameHelp":"Veuillez indiquez un quatier ou une rue",
+        "success":"<strong> c'est presque terminer veuillez juste indiquez un mot de passe !  il vous sera util pour vous connecter</strong>",
+        "password":"Mot de passe",
+        "confirmpassword":"Confirmation du mot de passe",
+        "declarationSaved":" Votre annonce à été enregistré et sera mise en ligne dans les prochains 6 heures après validation",
+        "declarationDetail":{
+        "price":"Prix",
+        "city":"Ville",
+        "description":"Description: ",
+        "phoneNumber":"Téléphone: ",
+        "email":"Email: "
+        }
+    }
+
+}

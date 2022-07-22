@@ -1,0 +1,237 @@
+
+<form name="editForm" role="form" novalidate data-ng-submit="vm.generalSave(vm.currentAccount.login)" data-show-validation>
+
+<!-- title of popup --->
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                data-ng-click="vm.clear()">&times;</button>
+        <h4 class="modal-title" id="myDeclarationLabel" data-translate="declarationUser.createOrEditLabel">Create or edit a Declaration</h4>
+    </div>
+
+    <div class="modal-body">
+
+        <!-- message on enregistrement de l'annonce --->
+        <div class="alert alert-success" data-ng-hide="!vm.isSave" data-translate="declarationUser.declarationSaved">
+            <strong>declaration saved!</strong>
+        </div>
+
+
+        <div class="well" data-ng-hide="vm.isSave">
+
+            <!-- title of declaration --->
+            <div class="row">
+            <div class="form-group col-md-7">
+                <label class="control-label" data-translate="declarationUser.title" for="field_title">Title</label>
+                <input type="text" class="form-control" name="title" id="field_title"
+                       data-ng-model="vm.declaration.title"
+                       required data-ng-minlength="5" maxlength="50"/>
+                <div data-ng-show="editForm.title.$invalid">
+                    <p class="help-block"
+                       data-ng-show="editForm.title.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                    <p class="help-block"
+                       data-ng-show="editForm.title.$error.minlength" data-translate="entity.validation.minlength" data-translate-value-min="5">
+                        This field is required to be at least 5 characters.
+                    </p>
+                </div>
+
+            </div>
+            </div>
+            <!--/ title of declaration --->
+
+            <!-- description  --->
+            <div class="row">
+            <div class="form-group col-md-7">
+                <label class="control-label" data-translate="declarationUser.description" for="field_description">Description</label>
+                <textarea class="form-control"
+                          name="description"
+                          id="field_description"
+                          data-ng-model="vm.declaration.description">
+
+                </textarea>
+            </div>
+            </div>
+            <!--/ description  --->
+
+            <!-- price  --->
+            <div class="row">
+                <div class="form-group col-md-3">
+                    <label class="control-label" data-translate="declarationUser.price" for="field_price">price</label>
+                    <input type="tel"
+                           class="form-control"
+                           name="price"
+                           id="field_price"
+                           data-ng-pattern="/^[0-9]*$/"
+                           data-ng-model="vm.declaration.price"
+                           required data-ng-minlength="2" maxlength="10"/> <span data-translate="register.messages.devis" ></span>
+                    <div data-ng-show="editForm.price.$invalid">
+                        <p class="help-block"
+                           data-ng-show="editForm.price.$error.required" data-translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                        <p class="help-block"
+                           data-ng-show="editForm.price.$error.minlength" data-translate="entity.validation.minlength" data-translate-value-min="2">
+                            This field is required to be at least 5 characters.
+                        </p>
+                        <p class="help-block"
+                           data-ng-show="editForm.price.$error.pattern" data-translate="register.messages.validate.price.pattern">
+                            Your username can only contain lower-case letters and digits.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ price  --->
+
+            <!-- the 3 photo of the declaration  -->
+            <div class="row">
+                <!-- photo 1  --->
+            <div data-ngf-select="vm.select1($file)"
+                 data-ngf-drop=""
+                 data-ng-model="vm.images.principal"
+                 data-ngf-model-invalid="invalidFiles"
+                 data-ngf-model-options="modelOptionsObj" data-ngf-multiple="false"
+                 data-ngf-pattern="pattern"
+                 data-ngf-accept="'image/*'"
+                 data-ng-hide="vm.hideUpload1"
+                 class="drop-box col-md-4" data-ngf-drop-available="true">
+                <span data-translate="declarationUser.image1">Select image 1</span>
+            </div>
+                <img class="drop-box col-md-4"
+                     data-ngf-src="!vm.images.principal.$error && vm.images.principal"
+                     data-ngf-resize="{width: 150, height: 150, quality: 0.9}">
+                <!-- /photo 1 --->
+
+                <!-- photo 2 --->
+                <div data-ngf-select="vm.select2($file)"
+                     data-ngf-drop=""
+                     data-ng-model="vm.images.image2"
+                     data-ngf-model-invalid="invalidFiles"
+                     data-ngf-model-options="modelOptionsObj" data-ngf-multiple="false"
+                     data-ngf-pattern="pattern"
+                     data-ngf-accept="'image/*'"
+                     data-ng-hide="vm.hideUpload2"
+                     class="drop-box col-md-4" data-ngf-drop-available="true">
+                    <span data-translate="declarationUser.image2">Select image 1</span>
+                </div>
+                <img class="drop-box col-md-4"
+                     data-ngf-src="!vm.images.image2.$error && vm.images.image2"
+                     data-ngf-resize="{width: 150, height: 150, quality: 0.9}">
+                <!-- /photo 2 --->
+
+                <!-- photo 3 --->
+                <div data-ngf-select="vm.select3($file)"
+                     data-ngf-drop=""
+                     data-ng-model="vm.images.image3"
+                     data-ngf-model-invalid="invalidFiles"
+                     data-ngf-model-options="modelOptionsObj" data-ngf-multiple="false"
+                     data-ngf-pattern="pattern"
+                     data-ngf-accept="'image/*'"
+                     data-ng-hide="vm.hideUpload3"
+                     class="drop-box col-md-4" data-ngf-drop-available="true">
+                    <span data-translate="declarationUser.image3">Select image 1</span>
+
+                </div>
+                <img class="drop-box col-md-4"
+                     data-ngf-src="!vm.images.image3.$error && vm.images.image3"
+                     data-ngf-resize="{width: 150, height: 150, quality: 0.9}">
+                <!--/ photo 3 -->
+            </div>
+            <!--/ the 3 photo of the declaration  -->
+
+        </div>
+
+        <div class="well" data-ng-hide="vm.isSave">
+
+            <!-- region declaration  --->
+            <div class="row">
+            <div class="form-group col-md-4">
+                <label class="control-label" data-translate="declarationUser.region" for="field_region">Region</label>
+                <select class="form-control"
+                        id="field_region"
+                        name="region"
+                        data-ng-model="vm.localisation.region"
+                        data-ng-options="region as region.name for region in vm.countryRegion track by region.id">
+                    <option value=""></option>
+                </select>
+                <div data-ng-show="editForm.region.$invalid">
+                    <p class="help-block"
+                       data-ng-show="editForm.region.$error.required" data-translate="entity.validation.required">
+                        This field is required.
+                    </p>
+                </div>
+            </div>
+            </div>
+            <!--/ region declaration  --->
+
+            <!-- cameroun cities by google places  --->
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label class="control-label" data-translate="declarationUser.city" for="field_city">City
+                    </label>
+                    <!-- help button-->
+                    <button type="button"
+                            class="help-btn"
+                            data-popover-placement="right"
+                            data-uib-popover="{{ 'declarationUser.cityHelp' | translate }}"
+                            data-popover-title="{{ 'global.form.help' | translate }}"
+                            data-popover-class="pophelp">
+                        <i class="fa fa-question-circle"></i>
+                    </button>
+
+                    <input type="text" class="form-control" name="city" id="field_city"
+                           data-ng-autocomplete="vm.localisation.city" data-details="vm.citiesOptionsDetail" data-options="vm.citiesOptions"
+                           data-ng-model="vm.localisation.city"
+                           required />
+                    <div data-ng-show="editForm.city.$invalid">
+                        <p class="help-block"
+                           data-ng-show="editForm.city.$error.required" data-translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                    </div>
+            </div>
+            <!--/ cameroun cities by google places  --->
+
+            <!-- quater--->
+            <div class="row">
+                <div class="form-group col-md-4">
+                    <label class="control-label" data-translate="declarationUser.streetName" for="field_streetName">street Name
+                    </label>
+                    <!-- help button-->
+                    <button type="button"
+                            class="help-btn"
+                            data-popover-placement="right"
+                            data-uib-popover="{{ 'declarationUser.streetNameHelp' | translate }}"
+                            data-popover-title="{{ 'global.form.help' | translate }}"
+                            data-popover-class="pophelp">
+                        <i class="fa fa-question-circle"></i>
+                    </button>
+
+                    <input type="text" class="form-control" name="streetName" id="field_streetName"
+                           data-ng-model="vm.localisation.streetName"
+                           required />
+                    <div data-ng-show="editForm.streetName.$invalid">
+                        <p class="help-block"
+                           data-ng-show="editForm.streetName.$error.required" data-translate="entity.validation.required">
+                            This field is required.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!--/ quater--->
+
+        </div>
+
+    </div>
+
+
+    <div class="modal-footer">
+        <button data-ng-hide="vm.isSave" type="button" class="btn btn-custom-cancel" data-dismiss="modal" data-ng-click="vm.clear()">
+            <span class="glyphicon glyphicon-ban-circle"></span>&nbsp;<span data-translate="entity.action.cancel">Cancel</span>
+        </button>
+        <button data-ng-hide="vm.isSave" type="submit" data-ng-disabled="editForm.$invalid || vm.isSaving" class="btn btn-custom-primary">
+            <span class="glyphicon glyphicon-save"></span>&nbsp;<span data-translate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

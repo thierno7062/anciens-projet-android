@@ -1,0 +1,246 @@
+<div>
+    <div class="row">
+
+        <div class="col-sm-3 col-md-3">
+
+
+            <uib-accordion close-others="oneAtATime">
+                <div uib-accordion-group class="panel panel-default" is-open="status2.open">
+                    <uib-accordion-heading>
+                        <h4 class="panel-title">
+                            <a><span class="glyphicon glyphicon-user"></span>{{'settings.menu.account' | translate}}</a>
+                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status2.open, 'glyphicon-chevron-right': !status2.open}"></i>
+                        </h4>
+                    </uib-accordion-heading>
+                    <uib-accordion-body >
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <a ui-sref="settings" data-translate="settings.menu.profile">profile</a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <a ui-sref=".password" data-translate="settings.menu.changePassword">Change Password</a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <a ui-sref=".sessions" data-translate="settings.menu.sessions">Import/Export</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <a href="" ng-click="vm.logout()" id="logout">
+                                            <span class="glyphicon glyphicon-log-out"></span>&nbsp;
+                                            <span data-translate="settings.menu.logout">Sign out</span>
+                                        </a>
+
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-trash text-danger"></span><a ui-sref="home" data-translate="settings.menu.effacer" class="text-danger">
+                                        Delete Account</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </uib-accordion-body>
+                </div>
+                <div uib-accordion-group class="panel panel-default" is-open="status.open">
+                    <uib-accordion-heading>
+                        <h4 class="panel-title">
+                            <a><span class="glyphicon glyphicon-folder-close"></span>{{'settings.menu.content' | translate}}</a>
+                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status.open, 'glyphicon-chevron-right': !status.open}"></i>
+                        </h4>
+                    </uib-accordion-heading>
+                    <uib-accordion-body >
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-bars" aria-hidden="true"></i>
+                                        </span><a ui-sref=".my-declarations">{{'settings.menu.myDeclarations' | translate}}</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-edit text-success"></span><a href data-ng-click="vm.openDeclaration()">{{'settings.menu.addDeclaration' | translate}}</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="fa fa-bell text-info"></span><a ui-sref="declaration-user-new"> {{'settings.menu.alerts' | translate}}</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </uib-accordion-body>
+                </div>
+                <div uib-accordion-group class="panel panel-default" is-open="status3.open">
+                    <uib-accordion-heading>
+                        <h4 class="panel-title">
+                            <a><span class="glyphicon glyphicon-file"></span>{{'settings.menu.messages' | translate}}</a>
+                            <i class="pull-right glyphicon" ng-class="{'glyphicon-chevron-down': status3.open, 'glyphicon-chevron-right': !status3.open}"></i>
+                        </h4>
+                    </uib-accordion-heading>
+                    <uib-accordion-body>
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                                        <a >{{'settings.menu.newMessage' | translate}}</a>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-inbox" aria-hidden="true"></i>
+                                        <a >{{'settings.menu.receivedMessages' | translate}}</a>
+                                        <span class="label label-info">5</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-folder" aria-hidden="true"></i>
+                                        <a>{{'settings.menu.sentMessages' | translate}}</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <i class="fa fa-folder-o" aria-hidden="true"></i>
+                                        <a >{{'settings.menu.draftMessages' | translate}}</a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </uib-accordion-body>
+                </div>
+            </uib-accordion>
+
+        </div>
+
+
+        <div ui-view="settingcontent" class="col-md-7">
+            <h2 data-translate="settings.title" translate-values="{username: '{{vm.settingsAccount.login}}'}">User settings for [<b>{{vm.settingsAccount.login}}</b>]</h2>
+
+            <div class="alert alert-success" ng-show="vm.success" data-translate="settings.messages.success">
+                <strong>Settings saved!</strong>
+            </div>
+
+            <jhi-alert-error></jhi-alert-error>
+
+            <form name="form" role="form" novalidate ng-submit="vm.save()" show-validation>
+
+                <div class="form-group">
+                    <label class="control-label" for="firstName" data-translate="settings.form.login">Login</label>
+                    <input type="text" class="form-control" id="login" name="login"
+                           ng-model="vm.settingsAccount.login" data-ng-disabled="true">
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label" for="firstName" data-translate="settings.form.firstname">First Name</label>
+                    <input type="text" class="form-control" id="firstName" name="firstName" placeholder="{{'settings.form.firstname.placeholder' | translate}}"
+                           ng-model="vm.settingsAccount.firstName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
+                    <div ng-show="form.firstName.$dirty && form.firstName.$invalid">
+                        <p class="help-block"
+                           ng-show="form.firstName.$error.required" data-translate="settings.messages.validate.firstname.required">
+                            Your first name is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.firstName.$error.minlength" data-translate="settings.messages.validate.firstname.minlength">
+                            Your first name is required to be at least 1 character.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.firstName.$error.maxlength" data-translate="settings.messages.validate.firstname.maxlength">
+                            Your first name cannot be longer than 50 characters.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label" for="lastName" data-translate="settings.form.lastname">Last Name</label>
+                    <input type="text" class="form-control" id="lastName" name="lastName" placeholder="{{'settings.form.lastname.placeholder' | translate}}"
+                           ng-model="vm.settingsAccount.lastName" ng-minlength=1 ng-maxlength=50 required maxlength="50">
+                    <div ng-show="form.lastName.$dirty && form.lastName.$invalid">
+                        <p class="help-block"
+                           ng-show="form.lastName.$error.required" data-translate="settings.messages.validate.lastname.required">
+                            Your last name is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.lastName.$error.minlength" data-translate="settings.messages.validate.lastname.minlength">
+                            Your last name is required to be at least 1 character.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.lastName.$error.maxlength" data-translate="settings.messages.validate.lastname.maxlength">
+                            Your last name cannot be longer than 50 characters.
+                        </p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label" for="email" data-translate="global.form.email">E-mail</label>
+                    <input type="email" class="form-control" id="email" name="email" placeholder="{{'global.form.email.placeholder' | translate}}"
+                           ng-model="vm.settingsAccount.email" ng-minlength=5 ng-maxlength=100 required maxlength="100">
+                    <div ng-show="form.email.$dirty && form.email.$invalid">
+                        <p class="help-block"
+                           ng-show="form.email.$error.required" data-translate="global.messages.validate.email.required">
+                            Your e-mail is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.email.$error.email" data-translate="global.messages.validate.email.invalid">
+                            Your e-mail is invalid.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.email.$error.minlength" data-translate="global.messages.validate.email.minlength">
+                            Your e-mail is required to be at least 5 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.email.$error.maxlength" data-translate="global.messages.validate.email.maxlength">
+                            Your e-mail cannot be longer than 100 characters.
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+                    <label class="control-label" for="phoneNumber" data-translate="global.form.phoneNumber">phoneNumber</label>
+                    <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="{{'global.form.phoneNumber.placeholder' | translate}}"
+                           ng-model="vm.settingsAccount.phoneNumber" ng-minlength=5 ng-maxlength="30" required maxlength="30">
+                    <div ng-show="form.phoneNumber.$dirty && form.phoneNumber.$invalid">
+                        <p class="help-block"
+                           ng-show="form.phoneNumber.$error.required" data-translate="global.messages.validate.phoneNumber.required">
+                            Your phoneNumber is required.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.phoneNumber.$error.email" data-translate="global.messages.validate.phoneNumber.invalid">
+                            Your phoneNumber is invalid.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.phoneNumber.$error.minlength" data-translate="global.messages.validate.phoneNumber.minlength">
+                            Your phoneNumber is required to be at least 5 characters.
+                        </p>
+                        <p class="help-block"
+                           ng-show="form.phoneNumber.$error.maxlength" data-translate="global.messages.validate.phoneNumber.maxlength">
+                            Your phoneNumber cannot be longer than 30 characters.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="langKey" data-translate="settings.form.language">Language</label>
+                    <select id="langKey" name="langKey" class="form-control" ng-model="vm.settingsAccount.langKey" ng-controller="JhiLanguageController as languageVm" ng-options="code as (code | findLanguageFromKey) for code in languageVm.languages"></select>
+                </div>
+
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-custom-primary" data-translate="settings.form.button">Save</button>
+            </form>
+        </div>
+    </div>
+
+</div>

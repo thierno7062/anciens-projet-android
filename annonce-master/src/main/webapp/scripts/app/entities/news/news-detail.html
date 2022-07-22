@@ -1,0 +1,62 @@
+
+<div>
+    <h2><span translate="newsappApp.news.detail.title">News</span> {{news.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="newsappApp.news.subject">Subject</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{news.subject}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="newsappApp.news.description">Description</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{news.description}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="newsappApp.news.author">Author</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{news.author}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="newsappApp.news.creationDate">CreationDate</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{news.creationDate}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="newsappApp.news.image">Image</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{news.image}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="news"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

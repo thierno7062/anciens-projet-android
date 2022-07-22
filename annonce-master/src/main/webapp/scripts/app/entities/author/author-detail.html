@@ -1,0 +1,70 @@
+
+<div>
+    <h2><span translate="newsappApp.author.detail.title">Author</span> {{author.id}}</h2>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th translate="entity.detail.field">Field</th>
+                    <th translate="entity.detail.value">Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <span translate="newsappApp.author.firstName">FirstName</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{author.firstName}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="newsappApp.author.lastName">LastName</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{author.lastName}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="newsappApp.author.pseudo">Pseudo</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{author.pseudo}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="newsappApp.author.email">Email</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{author.email}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="newsappApp.author.password">Password</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{author.password}}" readonly>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <span translate="newsappApp.author.picture">Picture</span>
+                    </td>
+                    <td>
+                        <input type="text" class="input-sm form-control" value="{{author.picture}}" readonly>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <button type="submit"
+            ui-sref="author"
+            class="btn btn-info">
+        <span class="glyphicon glyphicon-arrow-left"></span>&nbsp;<span translate="entity.action.back"> Back</span>
+    </button>
+</div>

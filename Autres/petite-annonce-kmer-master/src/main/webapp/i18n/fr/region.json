@@ -1,0 +1,11 @@
+{
+    "region": {
+        "title":"Région",
+        "search":{
+            "placeholder":   "Que recherchez-vous?",
+            "button":"Rechercher"
+        },
+        "reload":"Recharge automatique",
+        "nodelcaration":"Aucune annonce trouvée !"
+    }
+}

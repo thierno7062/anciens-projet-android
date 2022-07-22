@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="Annonce" />
+
+    <item
+        android:id="@+id/nav_search"
+        android:icon="@drawable/ic_search"
+        android:title="Recherche" />
+
+    <item
+        android:id="@+id/nav_add_publishing"
+        android:icon="@drawable/ic_add_circle"
+        android:title="Publier" />
+
+    <item
+        android:id="@+id/nav_favorite"
+        android:icon="@drawable/ic_favorite"
+        android:title="Favorite" />
+
+    <item
+        android:id="@+id/nav_add_account"
+        android:icon="@drawable/ic_account_circle"
+        android:title="Profil" />
+
+
+</menu>

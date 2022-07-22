@@ -1,0 +1,505 @@
+Step 1: Please add the below lines in your default activity i.e. LoginActivity(MainActivity) and change your package name.
+[ NOTE: If you are a beginner. Please give your activity name as LoginActivity and layout as activity_login while creating your project]
+
+
+//package com.demo.easylearn;
+
+import android.app.Dialog;
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ProgressBar;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class LoginActivity extends AppCompatActivity {
+    EditText mTextUsername;
+    EditText mTextPassword;
+    Button mButtonLogin;
+    TextView mTextViewRegister;
+    DatabaseHelper db;
+    ViewGroup progressView;
+    protected boolean isProgressShowing = false;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_login);
+
+        Dialog dialog = new Dialog(this,android.R.style.Theme_Translucent_NoTitleBar);
+        View v = this.getLayoutInflater().inflate(R.layout.progress_bar,null);
+        dialog.setContentView(v);
+        dialog.show();
+
+        db = new DatabaseHelper(this);
+        mTextUsername = (EditText)findViewById(R.id.edittext_username);
+        mTextPassword = (EditText)findViewById(R.id.edittext_password);
+        mButtonLogin = (Button)findViewById(R.id.button_login);
+        mTextViewRegister = (TextView)findViewById(R.id.textview_register);
+        mTextViewRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent registerIntent = new Intent(LoginActivity.this,RegisterActivity.class);
+                startActivity(registerIntent);
+            }
+        });
+
+        mButtonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String user = mTextUsername.getText().toString().trim();
+                String pwd = mTextPassword.getText().toString().trim();
+                Boolean res = db.checkUser(user, pwd);
+                if(res == true)
+                {
+                    Intent HomePage = new Intent(LoginActivity.this,HomeActivity.class);
+                    startActivity(HomePage);
+                }
+                else
+                {
+                    Toast.makeText(LoginActivity.this,"Login Error",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+
+    public void showProgressingView() {
+
+        if (!isProgressShowing) {
+            View view=findViewById(R.id.progressBar1);
+           view.bringToFront();
+        }
+    }
+
+    public void hideProgressingView() {
+        View v = this.findViewById(android.R.id.content).getRootView();
+        ViewGroup viewGroup = (ViewGroup) v;
+        viewGroup.removeView(progressView);
+        isProgressShowing = false;
+    }
+}
+
+
+_________________________________________________________________________________________________________________________________________
+
+Step 2: Add the below lines your layout file ie. activity_login.xml (under app/res/layout/activity_login.xml)
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.demo.easylearn.LoginActivity"
+    android:orientation="vertical"
+    android:id="@+id/container"
+    android:background="#123456"
+    android:gravity="center_horizontal">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="127dp"
+        android:layout_marginTop="50dp"
+        app:srcCompat="@drawable/logo"/>
+
+   <LinearLayout
+       android:gravity="center_horizontal"
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:foreground="#c2ffffff"
+       android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/edittext_username"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="2dp"
+        android:background="#ffffff"
+        android:drawableLeft="@drawable/username"
+        android:hint="@string/username"/>
+
+    <EditText
+        android:id="@+id/edittext_password"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffffff"
+        android:drawableLeft="@drawable/password"
+        android:hint="@string/password"/>
+</LinearLayout>
+
+    <Button
+        android:id="@+id/button_login"
+        android:layout_width="190dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#04ea00"
+        android:textColor="#ffffff"
+        android:text="@string/login"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:textColor="#ffffff"
+            android:text="@string/not_registered"/>
+
+        <TextView
+            android:id="@+id/textview_register"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:paddingLeft="10dp"
+            android:textStyle="bold"
+            android:textColor="#04ea00"
+            android:text="@string/register"/>
+
+    </LinearLayout>
+</LinearLayout>
+
+__________________________________________________________________________________________________________________________________________
+
+Step 3: Create another Activity, follow the steps- Click on App -> Click on Java -> Right click on package ->Click on New -> Click on empty Activity -> Write a name (ie. RegisterActivity and layout activity_register.xml). Then copy the below code in
+RegisterActivity.java file.
+[NOTE: Don't forget to give your package name which we give during creating the project. I have given package name as - com.demo.easylear ;]
+
+
+//RegisterActivity.java
+
+
+//package com.demo.easylearn;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+import android.widget.Toast;
+
+public class RegisterActivity extends AppCompatActivity {
+    DatabaseHelper db;
+    EditText mTextUsername;
+    EditText mTextPassword;
+    EditText mTextCnfPassword;
+    Button mButtonRegister;
+    TextView mTextViewLogin;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_register);
+
+        db = new DatabaseHelper(this);
+        mTextUsername = (EditText)findViewById(R.id.edittext_username);
+        mTextPassword = (EditText)findViewById(R.id.edittext_password);
+        mTextCnfPassword = (EditText)findViewById(R.id.edittext_cnf_password);
+        mButtonRegister = (Button)findViewById(R.id.button_register);
+        mTextViewLogin = (TextView)findViewById(R.id.textview_login);
+        mTextViewLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent LoginIntent = new Intent(RegisterActivity.this,LoginActivity.class);
+                startActivity(LoginIntent);
+            }
+        });
+
+        mButtonRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String user = mTextUsername.getText().toString().trim();
+                String pwd = mTextPassword.getText().toString().trim();
+                String cnf_pwd = mTextCnfPassword.getText().toString().trim();
+
+                if(pwd.equals(cnf_pwd)){
+                    long val = db.addUser(user,pwd);
+                    if(val > 0){
+                        Toast.makeText(RegisterActivity.this,"You have registered",Toast.LENGTH_SHORT).show();
+                        Intent moveToLogin = new Intent(RegisterActivity.this,LoginActivity.class);
+                        startActivity(moveToLogin);
+                    }
+                    else{
+                        Toast.makeText(RegisterActivity.this,"Registeration Error",Toast.LENGTH_SHORT).show();
+                    }
+
+                }
+                else{
+                    Toast.makeText(RegisterActivity.this,"Password is not matching",Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+    }
+}
+_________________________________________________________________________________________________________________________________________
+Step 4: Copy the below lines and add it to your activity_register.xml file.
+
+//activity_register.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/img_background"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    tools:context="com.demo.easylearn.RegisterActivity">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="127dp"
+        android:layout_marginTop="50dp"
+        app:srcCompat="@drawable/logo"/>
+
+    <EditText
+        android:id="@+id/edittext_username"
+        android:layout_width="206dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="10dp"
+        android:paddingLeft="2dp"
+        android:background="#ffffff"
+        android:drawableLeft="@drawable/username"
+        android:hint="@string/username"/>
+
+    <EditText
+        android:id="@+id/edittext_password"
+        android:layout_width="206dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffffff"
+        android:drawableLeft="@drawable/password"
+        android:hint="@string/password"/>
+
+    <EditText
+        android:id="@+id/edittext_cnf_password"
+        android:layout_width="206dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#ffffff"
+        android:drawableLeft="@drawable/password"
+        android:hint="@string/confirm_password"/>
+    <Button
+        android:id="@+id/button_register"
+        android:layout_width="206dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#04ea00"
+        android:textColor="#ffffff"
+        android:text="@string/register"/>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:textColor="#ffffff"
+            android:text="@string/already_registered"/>
+
+        <TextView
+            android:id="@+id/textview_login"
+            android:layout_width="wrap_content"
+            android:layout_height="35dp"
+            android:paddingLeft="10dp"
+            android:textStyle="bold"
+            android:textColor="#04ea00"
+            android:textSize="16sp"
+            android:text="@string/login"/>
+
+    </LinearLayout>
+
+</LinearLayout>
+
+_________________________________________________________________________________________________________________________________________
+
+Step 5. Create a class. Click on app -> Click on java -> Right click on your package name -> Click on new -> Click on java class  -> Write name as DatabaseHelper -> click ok.
+Add the below lines in your DatabaseHelper class.
+
+//DatabaseHelper.java
+
+
+//package com.demo.easylearn;
+
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
+public class DatabaseHelper extends SQLiteOpenHelper{
+    public static final String DATABASE_NAME ="register.db";
+    public static final String TABLE_NAME ="registeruser";
+    public static final String COL_1 ="ID";
+    public static final String COL_2 ="username";
+    public static final String COL_3 ="password";
+
+    public DatabaseHelper(Context context) {
+        super(context, DATABASE_NAME, null, 1);
+    }
+
+    @Override
+    public void onCreate(SQLiteDatabase sqLiteDatabase) {
+        sqLiteDatabase.execSQL("CREATE TABLE registeruser (ID INTEGER PRIMARY  KEY AUTOINCREMENT, username TEXT, password TEXT)");
+    }
+
+    @Override
+    public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
+        sqLiteDatabase.execSQL(" DROP TABLE IF EXISTS " + TABLE_NAME);
+        onCreate(sqLiteDatabase);
+    }
+
+    public long addUser(String user, String password){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put("username",user);
+        contentValues.put("password",password);
+        long res = db.insert("registeruser",null,contentValues);
+        db.close();
+        return  res;
+    }
+
+    public boolean checkUser(String username, String password){
+        String[] columns = { COL_1 };
+        SQLiteDatabase db = getReadableDatabase();
+        String selection = COL_2 + "=?" + " and " + COL_3 + "=?";
+        String[] selectionArgs = { username, password };
+        Cursor cursor = db.query(TABLE_NAME,columns,selection,selectionArgs,null,null,null);
+        int count = cursor.getCount();
+        cursor.close();
+        db.close();
+
+        if(count>0)
+            return  true;
+        else
+            return  false;
+    }
+}
+
+_________________________________________________________________________________________________________________________________________
+Step 6: This is optional. If you want to go to homepage after login add the below lines in a new activity. Click on app -> Click on java -> Right click on package name -> Click on new -> Click on empty activity -> Write name of the activity as HomeActivity and layout name as activity_home.
+
+//HomeActivity.java
+
+
+//package com.demo.easylearn;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+
+public class HomeActivity extends AppCompatActivity {
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_home);
+    }
+}
+
+_________________________________________________________________________________________________________________________________________
+Step 7: Add the below lines in activity_home.xml file.
+
+//activity_home
+
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.demo.easylearn.HomeActivity"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_user"
+        android:textColor="#123456"
+        android:textSize="23sp"
+        tools:layout_editor_absoluteX="151dp"
+        tools:layout_editor_absoluteY="227dp" />
+</LinearLayout>
+
+_________________________________________________________________________________________________________________________________________
+Step 8 : To add progressbar layout. Click on app -> click on res -> Right click on layout -> click new -> Click on layout resource file -> Write name as progressbar -> Click ok. Now add the below line in progressbar.xml layout file.
+
+//progressbar.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/relativeLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#00060606">
+
+    <ProgressBar
+        android:id="@+id/progressBar1"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_centerInParent="true"
+        android:indeterminateDrawable="@drawable/my_drawable"
+        />
+
+</RelativeLayout>
+
+___________________________________________________________________________________________________________________________________________________________
+Step 9: Add the below codes under resource tag in colors.xml file. Click on app -> res -> values -> colors.xml
+
+//colors.xml
+
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //<color name="colorPrimary">#3F51B5</color>
+   // <color name="colorPrimaryDark">#303F9F</color>
+   // <color name="colorAccent">#FF4081</color>
+
+//the three lines to be added are below
+
+    <color name="color_preloader_start">#fdb6b6</color>
+    <color name="color_preloader_center">#fdb6b6</color>
+    <color name="color_preloader_end">#ffffff</color>
+</resources>
+
+___________________________________________________________________________________________________________________________________________________________
+Step 10: Add the below codes under resource tag in colors.xml file. Click on app -> res -> values -> colors.xml
+
+//strings.xml
+
+
+<resources>
+    <string name="app_name">AndroidCam</string>
+    <string name="action_settings">Settings</string>
+   
+//lines to be added are below
+	<string name="login">LOGIN</string>
+	<string name="username">Username</string>
+	<string name="password">Password</string>
+	<string name="not_registered">Not Registered?</string>
+	<string name="register">Register</string>
+	<string name="confirm_password">Confirm Password</string>
+	<string name="already_registered">Already Registered?</string>
+	<string name="welcome_user">Welcome User</string>
+
+</resources>
+
+___________________________________________________________________________________________________________________________________________________________
+//Step 11.  Add the images. Right click on the image and copy it. Now go to Android Studio- Click on app -> res -> Right click on drawable -> Click Paste.
+Or else find your project in file explorer, find the drawable folder under res and copy all your images here.
+
+
+

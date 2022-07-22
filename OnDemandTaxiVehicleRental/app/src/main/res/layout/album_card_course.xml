@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="?android:selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:id="@+id/relative_layout">
+
+    <RelativeLayout
+        android:background="@color/white"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <RelativeLayout
+            android:layout_marginBottom="0dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginLeft="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="10dp"
+            android:paddingLeft="10dp"
+            android:paddingTop="15dp"
+            android:paddingBottom="17dp"
+            android:id="@+id/linear">
+
+            <FrameLayout
+                android:id="@+id/number_course"
+                android:layout_width="46dp"
+                android:layout_height="46dp">
+
+                <com.projets.heven.taxijaune.circleimage.CircleImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingLeft="3dp"
+                    android:paddingRight="3dp"
+                    android:paddingBottom="3dp"
+                    android:paddingTop="3dp"
+                    card_view:srcCompat="@drawable/ic_statut"
+                    android:tint="@color/colorPrimary"/>
+
+                <TextView
+                    android:textSize="14sp"
+                    android:textColor="@color/colorLogoBlack"
+                    android:layout_gravity="center"
+                    android:id="@+id/compteur_course"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="100" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_toEndOf="@+id/number_course"
+                android:paddingRight="0dp"
+                android:layout_marginLeft="0dp"
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:orientation="vertical"
+                android:layout_toRightOf="@+id/number_course">
+
+                <RelativeLayout
+                    android:layout_weight="3.33"
+                    android:orientation="horizontal"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_toStartOf="@+id/layout_option"
+                        android:layout_toLeftOf="@+id/layout_option"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:gravity="bottom|left"
+                            android:id="@+id/montant_course"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:text="30.000 $"
+                            android:textSize="16sp"
+                            android:textColor="@color/colorBlack"
+                            android:textStyle="normal"
+                            android:singleLine="true"/>
+
+                        <TextView
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginBottom="1dp"
+                            android:textSize="12sp"
+                            android:singleLine="true"
+                            android:gravity="bottom|left"
+                            android:text="à 1 m d'ici"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginRight="4dp"
+                            android:id="@+id/distance_destination"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"/>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_alignParentTop="true"
+                        android:layout_alignParentRight="true"
+                        android:id="@+id/layout_option"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_gravity="top"
+                            android:textSize="10sp"
+                            android:textColor="@color/colorLogoBlack"
+                            android:paddingLeft="5dp"
+                            android:paddingBottom="1dp"
+                            android:paddingRight="5dp"
+                            android:text="En cours"
+                            android:background="@drawable/custom_bg_statut_en_cours"
+                            android:id="@+id/statut_course"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"/>
+
+                        <TextView
+                            android:layout_gravity="top"
+                            android:gravity="top"
+                            android:textSize="15dp"
+                            android:id="@+id/moreOptions"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentRight="true"
+                            android:layout_alignParentTop="true"
+                            android:paddingLeft="20dp"
+                            android:paddingRight="0dp"
+                            android:text="&#8942;"
+                            android:textAppearance="?android:textAppearanceLarge" />
+                    </LinearLayout>
+
+                </RelativeLayout>
+
+                <LinearLayout
+                    android:layout_weight="3.33"
+                    android:orientation="horizontal"
+                    android:gravity="center|right|bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <LinearLayout
+                        android:layout_weight="2.5"
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+
+                        <TextView
+                            android:layout_marginLeft="5dp"
+                            android:layout_marginBottom="1dp"
+                            android:textSize="12sp"
+                            android:singleLine="true"
+                            android:gravity="bottom|left"
+                            android:text="24 Sep. à 10h."
+                            android:layout_marginTop="0dp"
+                            android:layout_marginRight="4dp"
+                            android:id="@+id/date_course"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"/>
+
+                        <TextView
+                            android:visibility="gone"
+                            android:textSize="12sp"
+                            android:singleLine="true"
+                            android:gravity="bottom|left"
+                            android:text=""
+                            android:layout_weight="1"
+                            android:layout_marginTop="0dp"
+                            android:layout_marginRight="4dp"
+                            android:id="@+id/customer_name_course"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <!--<ImageView-->
+                            <!--android:tint="@color/colorYelloDark"-->
+                            <!--android:layout_weight="7"-->
+                            <!--android:id="@+id/etat_pharmacie"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--card_view:srcCompat="@drawable/ic_statut"-->
+                            <!--android:layout_marginRight="10dp"/>-->
+                    </LinearLayout>
+
+                    <!--<LinearLayout-->
+                        <!--android:id="@+id/layout_distance_requete"-->
+                        <!--android:visibility="visible"-->
+                        <!--android:gravity="center"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:layout_weight="3"-->
+                        <!--android:orientation="horizontal">-->
+
+                        <!--<TextView-->
+                            <!--android:textSize="20sp"-->
+                            <!--android:singleLine="true"-->
+                            <!--android:text="5 km"-->
+                            <!--android:layout_weight="3"-->
+                            <!--android:gravity="right|center"-->
+                            <!--android:id="@+id/distance_requete"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent"/>-->
+
+                        <!--<ImageView-->
+                            <!--android:tint="@color/colorYelloDark"-->
+                            <!--android:padding="4dp"-->
+                            <!--card_view:srcCompat="@drawable/ic_pin"-->
+                            <!--android:layout_weight="10"-->
+                            <!--android:gravity="right"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent"/>-->
+                    <!--</LinearLayout>-->
+
+                    <LinearLayout
+                        android:id="@+id/layout_distance_course"
+                        android:visibility="visible"
+                        android:gravity="center"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="3"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:textSize="20sp"
+                            android:singleLine="true"
+                            android:text="5 km"
+                            android:layout_weight="3"
+                            android:gravity="right|center"
+                            android:id="@+id/distance_course"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+
+                        <ImageView
+                            android:tint="@color/colorYelloDark"
+                            android:padding="0dp"
+                            card_view:srcCompat="@drawable/ic_distance"
+                            android:layout_weight="10"
+                            android:gravity="right"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"/>
+                    </LinearLayout>
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <View
+            android:visibility="visible"
+            android:id="@+id/line_divider"
+            android:layout_width="match_parent"
+            android:layout_height="0.5dp"
+            android:layout_below="@+id/linear"
+            android:background="#e2e2e2"/>
+    </RelativeLayout>
+</RelativeLayout>

@@ -1,0 +1,28 @@
+{
+    "fluentMethods": true,
+    "relationships": [
+        {
+            "relationshipName": "localisation",
+            "otherEntityName": "localisation",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "country"
+        },
+        {
+            "relationshipName": "region",
+            "otherEntityName": "region",
+            "relationshipType": "one-to-many",
+            "otherEntityRelationshipName": "country"
+        }
+    ],
+    "fields": [
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20161204065928",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "country",
+    "pagination": "no"
+}

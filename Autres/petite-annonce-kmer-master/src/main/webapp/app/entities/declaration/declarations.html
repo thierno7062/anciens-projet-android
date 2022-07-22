@@ -1,0 +1,80 @@
+<div>
+    <h2 data-translate="petiteAnnonceKmerApp.declaration.home.title">Declarations</h2>
+    <jhi-alert></jhi-alert>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xs-4 no-padding-left">
+                <button class="btn btn-custom-primary" data-ui-sref="declaration.new" >
+                    <span class="glyphicon glyphicon-plus"></span>
+                    <span  data-translate="petiteAnnonceKmerApp.declaration.home.createLabel">
+                        Create new Declaration
+                    </span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <br/>
+    <div class="table-responsive">
+        <table class="jh-table table table-striped">
+            <thead>
+                <tr data-jh-sort="vm.predicate" data-ascending="vm.reverse" data-callback="vm.transition()">
+                    <th data-jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th data-jh-sort-by="title"><span data-translate="petiteAnnonceKmerApp.declaration.title">Title</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th data-jh-sort-by="description"><span data-translate="petiteAnnonceKmerApp.declaration.description">Description</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th data-jh-sort-by="creationDate"><span data-translate="petiteAnnonceKmerApp.declaration.creationDate">Creation Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th data-jh-sort-by="lastModifiedDate"><span data-translate="petiteAnnonceKmerApp.declaration.lastModifiedDate">Last Modified Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th data-jh-sort-by="isPublished"><span data-translate="petiteAnnonceKmerApp.declaration.isPublished">Is Published</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th data-jh-sort-by="price"><span data-translate="petiteAnnonceKmerApp.declaration.price">Price</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th data-jh-sort-by="publishedDate"><span data-translate="petiteAnnonceKmerApp.declaration.publishedDate">Published Date</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th data-jh-sort-by="owner.firstName"><span data-translate="petiteAnnonceKmerApp.declaration.owner">Owner</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th data-jh-sort-by="localisation.city"><span data-translate="petiteAnnonceKmerApp.declaration.localisation">Localisation</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-ng-repeat="declaration in vm.declarations track by declaration.id">
+                    <td><a data-ui-sref="declaration-detail({id:declaration.id})">{{declaration.id}}</a></td>
+                    <td>{{declaration.title}}</td>
+                    <td>{{declaration.description}}</td>
+                    <td>{{declaration.creationDate |pakDate}}</td>
+                    <td>{{declaration.lastModifiedDate |pakDate}}</td>
+                    <td>{{declaration.isPublished}}</td>
+                    <td>{{declaration.price}}</td>
+                    <td>{{declaration.publishedDate |pakDate}}</td>
+                    <td>
+                        {{declaration.owner.login}}
+                    </td>
+                    <td>
+                        <a data-ui-sref="localisation-detail({id:declaration.localisation.id})">{{declaration.localisation.city}}</a>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group flex-btn-group-container">
+                            <button type="button"
+                                    data-ui-sref="declaration-detail({id:declaration.id})"
+                                    class="btn btn-custom-cancel btn-sm">
+                                <span class="glyphicon glyphicon-eye-open"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.view"></span>
+                            </button>
+                            <button type="button"
+                                    data-ui-sref="declaration.edit({id:declaration.id})"
+                                    class="btn btn-custom-secondary btn-sm">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.edit"></span>
+                            </button>
+                            <button type="button"
+                                    data-ui-sref="declaration.delete({id:declaration.id})"
+                                    class="btn btn-custom-delete btn-sm">
+                                <span class="glyphicon glyphicon-remove-circle"></span>
+                                <span class="hidden-xs hidden-sm" data-translate="entity.action.delete"></span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="text-center">
+        <data-jhi-item-count page="vm.page" total="vm.queryCount" items-per-page="vm.itemsPerPage"></data-jhi-item-count>
+        <data-uib-pagination class="pagination-sm" total-items="vm.totalItems" items-per-page="vm.itemsPerPage" ng-model="vm.page" ng-change="vm.transition()"></data-uib-pagination>
+    </div>
+</div>

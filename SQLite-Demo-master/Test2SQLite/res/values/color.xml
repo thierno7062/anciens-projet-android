@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<color name="blue">#0303ff</color>
+	<color name="grey">#f7f7f7</color>
+	<color name="black">#000000</color>
+	<color name="orange">#FB6624</color>
+	<color name="orangehyperlight">#44FB6624</color>
+	<color name="orangelight">#66FB6624</color>
+	<color name="orangedarker">#CCFB6624</color>
+	<color name="orangechurn">#77FB6624</color>
+	<color name="fontcolor_gradiant">#B9B9B9</color>
+	<color name="graycolor">#626060</color>
+	<color name="lightgraycolor">#66626060</color>
+	<color name="ccolor">#99000000</color>
+	<color name="coffee">#6F4E37</color>
+	<color name="brown">#350F0F</color>
+	<color name="fblue">#993b5997</color>
+	<color name="fblue_dark">#3b5997</color>
+	<color name="winered">#CC571919</color>
+	<color name="winered_dark">#E40C17</color>
+	<color name="white">#FFFFFF</color>
+	<color name="trans">#00757691</color>
+	<color name="transparentview">#88757691</color>
+	<color name="transparentviewdark">#BB757691</color>
+	<color name="wineredlight">#66571919</color>
+	<color name="winereddarker">#99571919</color>
+	<color name="apptheme">#F0EDEC</color>
+	<color name="appthemetrans">#BBF0EDEC</color>
+	<color name="translucent_black">#bb000000</color>
+	<color name="translucent_black_light">#80000000</color>
+	<color name="lightblue">#ff31B1ED</color>
+	<color name="light_blue">#ff31B1ED</color>
+</resources>

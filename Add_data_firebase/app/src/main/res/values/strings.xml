@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Add_data_firebase</string>
+
+    <array name="courses">
+        <item>English</item>
+        <item>Urduc</item>
+        <item>physics</item>
+        <item>Chemistry</item>
+
+    </array>
+
+
+</resources>

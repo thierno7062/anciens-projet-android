@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#fcc325</color>
+    <color name="colorPrimaryDark">#AF871A</color>
+    <color name="colorAccent">#181617</color>
+    <color name="colorLogoBlack">#242122</color>
+    <color name="colorBlack">#000000</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorYelloDark">#ECAE00</color>
+    <color name="grisGooglePlay">#5f6368</color>
+    <color name="colorTransparent">#00000000</color>
+    <color name="colorGris">#e9ebee</color>
+    <color name="colorGreen2">#0f9d58</color>
+    <color name="colorRed">#EE153F</color>
+    <color name="colorYellowWhile">#FFF0BE</color>
+
+</resources>

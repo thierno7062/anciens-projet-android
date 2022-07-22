@@ -1,0 +1,22 @@
+{
+    "newsappApp": {
+        "news" : {
+            "home": {
+                "title": "Newss",
+                "createLabel": "Create a new News",
+                "createOrEditLabel": "Create or edit a News"
+            },
+            "delete": {
+                "question": "Are you sure you want to delete News {{ id }}?"
+            },
+            "detail": {
+                "title": "News"
+            },
+            "subject": "Subject",
+            "description": "Description",
+            "author": "Author",
+            "creationDate": "CreationDate",
+            "image": "Image"
+        }
+    }
+}
